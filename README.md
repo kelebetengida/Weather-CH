@@ -17,4 +17,4 @@ Bootstrap
 
 # Mock-up
 
-<img src="./Assets/imges/Picture1.png"></img>
+<img src="./Assets/images/Picture1.png"></img>
