@@ -18,28 +18,28 @@
 </head>
 
 <body>
-    <header class="container-fluid text-center text-white bg-dark p-2">
+    <header class="container-fluid text-center text-white bg-primary p-2">
 
-        <h1>Weather Dashboard</h1>
+        <h1><strong>Weather Dashboard</strong></h1>
     </header>
 
 
     <main class="row">
         <div class="col-lg-3">
 
-            <div class="card">
-                <h3 class="card-header text-uppercase">Search By City</h3>
-                <form id="user-form" class="card-body">
+            <div class="card ">
+                <h3 class="card-header text-uppercase"><strong>Search By City</strong> </h3>
+                <form id="user-form" class="card-body bg-primary">
 
-                    <input id="cityname" type="text" autofocus="true" class="form-input"
+                    <input  id="cityname" type="text" autofocus="true" class="form-input"
                         placeholder="city name"/>
                     <button type="submit" id="search-btn">Search</button>
                 </form>
 
             </div>
 
-            <div class="card">
-                <h3 class="card-header text-uppercase">Recent City Vists</h3>
+            <div class="cards">
+                <h3 class="card-header text-uppercase"><strong>Recent City Vists</strong></h3>
                 <section id="search"></section>
             </div>
         </div>
