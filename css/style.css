@@ -10,21 +10,20 @@
 
 }
 .subtitle{
-    background-color: blue;
+    
  
     margin-top: 20px;
 }
-.subtitle{
-    background-color: blue;
-}
+
 #city-container{
     display: flex;
     flex-direction: row;
 }
 h1 {
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
   }
 
 #city-container{
     margin-top: 29px;
+    font-weight: bolder;
 }

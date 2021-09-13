@@ -8,13 +8,13 @@ $(document).ready(function () {
       })
       .then(function (data) {
           console.log(data);
-          let card= $("<div class='card shadow-lg text-white bg-success'>").addClass("card")
+          let card= $("<div class='card shadow-lg text-white bg-success rounded shadow-sm  rounded'>").addClass("card")
           let name=$("<h1>").addClass("card-text").text(`${data.name} (${new Date().toLocaleDateString()})`);
           const icon = $('<img>').attr('src', `http://openweathermap.org/img/w/${data.weather[0].icon}.png`);
 
-          let temp=$("<p>").addClass("card-text").text(`Temp: ${data.main.temp}`)
-          let wind=$("<p>").addClass("card-text").text(`wind: ${data.wind.speed}`)
-          let humidity=$("<p>").addClass("card-text").text(`humidity: ${data.main.humidity}`)
+          let temp=$("<p>").addClass("card-text").text(`Tempreture: ${data.main.temp}`)
+          let wind=$("<p>").addClass("card-text").text(`Wind Speed: ${data.wind.speed}`)
+          let humidity=$("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`)
           $(".subtitle").empty();
           name.append(icon);
           card.append(name, temp, wind, humidity);
@@ -53,16 +53,14 @@ $(document).ready(function () {
 
           for (let i = 0; i < data.list.length; i += 8) {
 
-            let fiveForcast = $("<div class='card shadow-lg text-white bg-success mx-auto  h3' style='width: 15rem; height: 20rem;'>");
+            let fiveForcast = $("<div class='card shadow-lg text-white bg-success mx-auto  h3' style='width: 13rem; height: 20rem;'>");
             let date = data.list[i].dt_txt;
             let setDate = date.substr(0,10)
             let temp = data.list[i].main.temp;
             let winds = data.list[i].wind.speed;
             let humd = data.list[i].main.humidity;
             let weather = data.list[i].weather[0].main
-            const lat=data.list[i].city.coord.lat;
-            const lon=data.list[i].city.coord.lon;
-            let uvi= searchUv(lat, lon);
+            
             
 
             if (weather === "Rain") {
@@ -86,27 +84,20 @@ $(document).ready(function () {
             }
 
             let fiveDayDate = $("<h2 class='card-title'>").text(setDate);
-            let Temp = $("<p class='card-text'>").text("Temp: " + temp);
-            let windSpeed = $("<p class='card-text'>").text("Wind: " + winds);
+            let Temp = $("<p class='card-text'>").text("Tempreture: " + temp + "F");
+            let windSpeed = $("<p class='card-text'>").text("Wind Speed: " + winds+ "mph");
             let humid = $("<p class='card-text'>").text("Humidity: " + humd);
-            let index = $("<p class='card-text'>").text("Humidity: " + uvi);
-            
-            
-            
+  
             fiveForcast.append(fiveDayDate);
             fiveForcast.append(icon);
             fiveForcast.append(Temp);
             fiveForcast.append(windSpeed);
             fiveForcast.append(humid);
-            fiveForcast.append(index);
-            
-           
+    
             $("#city-container").append(fiveForcast);
           }
         })
-
     }
-    
     $("#search-btn").on("click", function(e){
       e.preventDefault();
       let cityName=$("#cityname").val().trim();
@@ -121,16 +112,13 @@ $(document).ready(function () {
       var lastSearch = JSON.parse(localStorage.getItem("cityName"));
       for(let i=0; i<lastSearch.length;i++){
         
-        var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 22rem;'>").text(lastSearch);
+        var searchDiv = $("<button class='bttn border text-muted mt-1 shadow-lg bg-white rounded' style='width: 22rem;'>").text(lastSearch);
         $("#search").append(searchDiv);
-      }
-      
+        $(searchDiv).on('click', function(event) {
+          event.preventDefault();
+          console.log(lastSearch[i]);
+          searchweather(lastSearch);
+          });
+      } 
   }
-  
-  $("#search").on('click', '.btn', function(event) {
-    event.preventDefault();
-        
-        searchweather(city).text();
-    });
-
 });
